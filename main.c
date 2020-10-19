@@ -1,5 +1,5 @@
 #include "header.h"
-
+//test git
 int main(int argc, char** argv) {
   FILE *fptr;
   char arr[50][120];
