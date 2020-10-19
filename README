@@ -1,0 +1,34 @@
+Name: Patrick Tsai
+Email: patrick.tsai@wsu.edu
+
+Compile Instructions:
+ 1. Unzip package
+ 2. In folder type > make
+ 3. To run program > ./main file_name.txt
+ 4. To remove .o files type > make clean
+
+Issue: I ran into an issue testing with the sample text in blackboard. My filehandler didn't work.
+
+UPDATE: Found that the blackboard sample file was made on a mac and it uses a \r newline character (not the \n new line character linux uses)
+        Just wanted to let you all know in case others are having issues.
+
+List of files:
+  1. addNfa.c           // adds a new linked list node for each NFA
+  2. addTrans.c         // adds a new linked list node for each transition
+  3. addTransEnd.c      // adds an ending linked list node for the or and star operations 
+  4. fileHandler.c      // ingests the contents of a file and formats each line into a string
+  5. header.h           // contains all the include structure and function protyping data 
+  6. main.c             // main code for reading the strings
+  7. Makefile           // compiles the program files
+  8. nfaInit.c          // creates a sentinel node for the nfa linked list
+  9. opAnd.c            // code for the AND operation
+  10. opOr.c            // code for the OR operation
+  11. opStar.c          // code for the * operation
+  12. pop.c             // pops from the stack
+  13. print.c           // prints the contents of each NFA
+  14. push.c            // pushes to the stack
+  15. README            // the file you are reading right now
+  16. readTop.c         // reads the top of the stack 
+  17. transitionInit.c  // creates the sentinel node for the transitions linked list
+  18. testFileA.txt     // I had trouble with the sample text provided on blackboard
+  19. testFile.txt      // original blackboard sample, should work now
