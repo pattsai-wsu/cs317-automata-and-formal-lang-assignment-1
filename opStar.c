@@ -2,6 +2,7 @@
 
 struct node* opStar(struct node* beginNode) {
   struct trans* beginNodePrevious;
+  struct trans* beginNodePreviousDelete;
   struct trans* beginNodeCurrent;
   int numStates=0;
   
@@ -10,6 +11,17 @@ struct node* opStar(struct node* beginNode) {
   numStates++;
 
   while(beginNodeCurrent->next != NULL) {
+    if(beginNodeCurrent->state2 == -999) {
+      beginNodePreviousDelete=beginNodeCurrent;
+      beginNodeCurrent=beginNodePreviousDelete->next;
+      beginNodePrevious->next=beginNodeCurrent;
+      beginNodePreviousDelete->next=NULL;
+      //beginNodeCurrent->state1 = addState;
+      //beginNodeCurrent->state2 = (nextNodeCurrent->state2) + addState;
+      numStates--;
+    }
+
+    beginNodePrevious = beginNodeCurrent;
     beginNodeCurrent = beginNodeCurrent->next;
     numStates++;
   }

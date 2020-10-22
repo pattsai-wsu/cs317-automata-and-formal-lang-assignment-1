@@ -7,7 +7,7 @@ struct node* opOr(struct node* beginNode, struct node* nextNode) {
   struct trans* nextNodePreviousTrack;
   struct trans* nodeTrack;
   struct trans* nextNodeCurrent;
-  int diff,numStates=0;
+  int diff,addState,numStates=0;
 
   beginNodePrevious = beginNode->transList;
   beginNodeCurrent = beginNodePrevious->next;
@@ -17,6 +17,8 @@ struct node* opOr(struct node* beginNode, struct node* nextNode) {
     beginNodeCurrent = beginNodeCurrent->next;
     numStates++;
   }
+  addState = beginNodeCurrent->state1;
+
   nextNodePrevious = nextNode->transList;
   nextNodePreviousTrack = nextNode->transList;
   nextNodeCurrent = nextNodePrevious->next;
@@ -25,6 +27,7 @@ struct node* opOr(struct node* beginNode, struct node* nextNode) {
   nextNodeCurrent->state1 = beginNodeCurrent->state1 + 1;
   nextNodeCurrent->state2 = (nextNodeCurrent->state1) + 1;
   nextNodePreviousTrack = nextNodeCurrent;
+  nextNodePrevious = nextNodeCurrent;
   nextNodeCurrent = nextNodeCurrent->next;
   numStates++;
   
@@ -34,12 +37,14 @@ struct node* opOr(struct node* beginNode, struct node* nextNode) {
     diff = (nextNodeCurrent->state2 - nextNodeCurrent->state1);	  
     printf("next Node current state1: %d, state2: %d\n", nextNodeCurrent->state1, nextNodeCurrent->state2);
     printf("iteration: %d, diff value: %d\n", tester, diff);
+
     nextNodeCurrent->state1 = nextNodePreviousTrack->state2;
     nextNodeCurrent->state2 = (nextNodeCurrent->state1) + diff;
+
+    nextNodePrevious = nextNodeCurrent;
     nextNodePreviousTrack = nextNodeCurrent;
     nextNodeCurrent = nextNodeCurrent->next;
     numStates++;
-    tester++;
   }
   if(nextNodeCurrent->next == NULL) {
     diff = (nextNodeCurrent->state2 - nextNodeCurrent->state1);	  
