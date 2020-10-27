@@ -1,8 +1,8 @@
 COMPILEFLAGS=
 CCOMP=gcc
 
-main: main.o fileHandler.o push.o pop.o readTop.o nfaInit.o transitionInit.o addNfa.o addTrans.o print.o addTransEnd.o opAnd.o opOr.o opStar.o
-	$(CCOMP) $(COMPILEFLAGS) -o main main.o fileHandler.o push.o pop.o readTop.o nfaInit.o transitionInit.o addNfa.o addTrans.o print.o addTransEnd.o opAnd.o opOr.o opStar.o
+main: main.o fileHandler.o push.o pop.o readTop.o nfaInit.o transitionInit.o addNfa.o addTrans.o print.o addTransEnd.o opAnd.o opOr.o opStar.o freeNfa.o freeTrans.o
+	$(CCOMP) $(COMPILEFLAGS) -o main main.o fileHandler.o push.o pop.o readTop.o nfaInit.o transitionInit.o addNfa.o addTrans.o print.o addTransEnd.o opAnd.o opOr.o opStar.o freeNfa.o freeTrans.o
 main.o: main.c header.h
 	$(CCOMP) $(COMPILEFLAGS) -c main.c
 fileHandler.o: fileHandler.c header.h
@@ -31,5 +31,9 @@ opOr.o: opOr.c header.h
 	$(CCOMP) $(COMPILEFLAGS) -c opOr.c
 opStar.o: opStar.c header.h
 	$(CCOMP) $(COMPILEFLAGS) -c opStar.c
+freeNfa.o: freeNfa.c header.h
+	$(CCOMP) $(COMPILEFLAGS) -c freeNfa.c
+freeTrans.o: freeTrans.c header.h
+	$(CCOMP) $(COMPILEFLAGS) -c freeTrans.c
 clean:
-	rm main.o fileHandler.o push.o pop.o readTop.o nfaInit.o transitionInit.o addNfa.o addTrans.o print.o addTransEnd.o opAnd.o opOr.o opStar.o main
+	rm main.o fileHandler.o push.o pop.o readTop.o nfaInit.o transitionInit.o addNfa.o addTrans.o print.o addTransEnd.o opAnd.o opOr.o opStar.o freeNfa.o freeTrans.o main

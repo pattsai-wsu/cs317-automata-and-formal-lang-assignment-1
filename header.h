@@ -39,7 +39,9 @@ struct node* opStar(struct node*);
 void readTop(char*, int*);
 void printAll(struct node*, struct trans*);
 void printNfa(struct trans*);
-void print(struct node*, struct trans*);
+void print(struct node*);
 
 void fileHandler(FILE*, char[][120], int*);
 void clearStack(struct node**, int*);
+void freeNfa(struct node*);
+void freeTrans(struct trans*);
