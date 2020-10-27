@@ -113,10 +113,27 @@ int main(int argc, char** argv) {
 	    }
 	  }
 	  else if(arr[i][j] == 42) {          //using ascii numerical value for *
-            if(top >= 0) {
-	      pop1 = pop(stackArr,&top); 
-	      currentNfa = opStar(pop1); 
-     	      push(currentNfa,stackArr,&top);
+            if(top >= 0 && top <= 1) {
+              if(top == 0) {
+	        pop1 = pop(stackArr,&top); 
+	        currentNfa = opStar(pop1); 
+     	        push(currentNfa,stackArr,&top);
+              }
+	      else if (top > 0) {
+	        if(arr[i][j+1] == 124 || arr[i][j+1] == 38) {
+	          pop1 = pop(stackArr,&top); 
+	          currentNfa = opStar(pop1); 
+     	          push(currentNfa,stackArr,&top);
+	        }
+		else {
+                  pop1 = pop(stackArr,&top);
+		  freeNfa(currentNfa);
+	          currentNfa=stackArr[top];
+		  currentNfa->next = NULL;
+                  currentNfa->isValid = false;
+		break;
+		}
+	      }
 	    }
 	    else {
 	      if (top == -1){
@@ -124,7 +141,7 @@ int main(int argc, char** argv) {
 	        currentNfa->isValid = false;
 	      }
 	      else {
-	        currentNfa->isValid = false;
+                currentNfa->isValid = false;
 	        //printf("Invalid regular expression string\n");
 	      }
 	      break;
