@@ -16,7 +16,7 @@ struct node* addNfa(struct node* nfaLL, char fullString[120]) {
   current = nfaLL->next;
 
   struct node *newNode = malloc(sizeof(struct node));
-  transition transListInit;
+  struct trans* transListInit;
   transListInit = transitionInit(newNode);
 
   newNode->startState = 1;

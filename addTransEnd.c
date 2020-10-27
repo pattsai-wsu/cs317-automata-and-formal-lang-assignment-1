@@ -16,4 +16,3 @@ void addTransEnd(struct trans* beforeTrans) {
 
   return;
 }
-

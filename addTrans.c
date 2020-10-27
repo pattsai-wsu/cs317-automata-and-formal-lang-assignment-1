@@ -2,11 +2,11 @@
 
 struct trans* addTrans(struct node* curNfa, char cIn) {
   struct trans* previous;
-  struct trans* current;
+  //struct trans* current;
   struct trans* end;
 
   previous = curNfa->transList;
-  current = curNfa->transList->next;
+  //current = curNfa->transList->next;
 
   struct trans *newTrans = malloc(sizeof(struct trans));
 

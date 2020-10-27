@@ -16,6 +16,7 @@ struct node* opStar(struct node* beginNode) {
       beginNodeCurrent=beginNodePreviousDelete->next;
       beginNodePrevious->next=beginNodeCurrent;
       beginNodePreviousDelete->next=NULL;
+      free(beginNodePreviousDelete);
       //beginNodeCurrent->state1 = addState;
       //beginNodeCurrent->state2 = (nextNodeCurrent->state2) + addState;
       numStates--;

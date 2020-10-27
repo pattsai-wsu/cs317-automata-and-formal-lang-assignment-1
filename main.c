@@ -154,8 +154,9 @@ int main(int argc, char** argv) {
       //printf("top value: %d\n", top);
       i++;
     }
+print(nfaRoot);
 
-print(nfaRoot, transRoot);
+freeNfa(nfaRoot);
 
 return 0;
 }

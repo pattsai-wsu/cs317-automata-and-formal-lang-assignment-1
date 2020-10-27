@@ -1,6 +1,6 @@
 #include "header.h"
-
-void print(struct node* nfaRoot, struct trans* transRoot) {
+void print(struct node* nfaRoot) {
+  struct trans* transRoot;
   if(nfaRoot->isNfaRoot == 1) {
     if(nfaRoot->next != NULL) {
       nfaRoot=nfaRoot->next;

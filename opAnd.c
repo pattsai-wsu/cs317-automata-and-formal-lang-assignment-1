@@ -28,6 +28,7 @@ struct node* opAnd(struct node* beginNode, struct node* nextNode) {
 
   beginNodeCurrent->next = nextNodeCurrent;
   nextNodePrevious->next = NULL;  //remove pointer from transition root
+  free(nextNodePrevious);
   nextNodePrevious = beginNodeCurrent;
 
   nextNodeCurrent->nfaParent = newNfaParent;
@@ -52,6 +53,7 @@ struct node* opAnd(struct node* beginNode, struct node* nextNode) {
       nextNodeCurrent=nextNodePreviousDelete->next;
       nextNodePrevious->next=nextNodeCurrent;
       nextNodePreviousDelete->next=NULL;
+      free(nextNodePreviousDelete);
       nextNodeCurrent->state1 = addState;
       nextNodeCurrent->state2 = (nextNodeCurrent->state2) + addState;
     } 
@@ -80,7 +82,7 @@ struct node* opAnd(struct node* beginNode, struct node* nextNode) {
   }
 
   beginNode->next = NULL;
-  nextNode->transList = NULL;   // remove pointer from next node 
+  free(nextNode);
   beginNode->acceptStates = nextNodeCurrent->state1;
 
 return (beginNode);
